@@ -1,0 +1,116 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+}
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 20px;
+    color: #ff0000;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+header {
+    text-align: center;
+}
+h2 {
+    font-size: 1.5rem;
+    font-family: monospace;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+h4 {
+    font-size: 1rem;
+    color: #999898;
+    font-family: monospace;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input {
+    padding: 10px;
+    width: 300px;
+    font-size: 1rem;
+    border: 2px solid #ff0000;
+    border-radius: 20px;
+}
+.password-wrapper {
+    position: relative;
+    width: 400px;
+    max-width: 300px;
+    margin-left: -20px;
+}
+.password-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 5px;
+}
+.toggle-password {
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #007BFF;
+    margin-right: 22%;
+}
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 5px;
+}
+button:hover {
+    background-color: #ff0000;
+}
+a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 0.9rem;
+}
+a:hover {
+    text-decoration: underline;
+}
+.forgot-password {
+    margin-right: auto;
+    color: rgb(253, 186, 85);
+}
+.back-home {
+    margin-top: 0px;
+}
+/* Responsive design */
+@media (max-width: 600px) {
+    input, button {
+        width: 100%;
+        max-width: 100%;
+    }
+    .password-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

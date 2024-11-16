@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="icon" type="image/png" href="adminlogo.jpg">
+    <link rel="stylesheet" href="admin-login.css">
+    <script src="admin-login.js" defer></script>
+</head>
+
+<body>
+    <!-- Title positioned at the top of the page -->
+    <h1>VICTORY LINER</h1>
+
+    <main>
+        <header>
+            <h2>SIGN IN</h2>
+            <h4>admin</h4>
+        </header>
+        <form id="adminLoginForm">
+            <input type="text" id="adminUsername" placeholder="Email" name="adminUsername" required>
+
+            <div class="password-wrapper">
+                <input type="password" id="adminPassword" placeholder="Password" name="adminPassword" required>
+            </div>
+
+            <!-- Forgot Password and Show Password placed below input field -->
+            <div class="password-options">
+                <span class="toggle-password" onclick="togglePassword()">Show Password</span>
+                <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+        <a href="index.html" class="back-home">Back to Home</a>
+    </main>
+
+</body>
+</html>

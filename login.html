@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="vlogo.png">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+</head>
+
+<body>
+    <h1>VICTORY LINER</h1>
+    <main>
+        <header>
+            <h2>SIGN IN</h2>
+            <h4>user</h4>
+        </header>
+        <form onsubmit="loginUser(event)">
+            <input type="text" id="username" placeholder="Email" name="username" required>
+            <br>
+            <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Password" name="password" required>
+                <div class="password-options">
+                    <span class="toggle-password" id="toggle-password" onclick="togglePassword()">Show Password</span>
+                    <a href="forgot_password.html" class="forgot-password">Forgot Password?</a>
+                </div>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Don't have an account?<a href="register.html">Register here</a></p>
+        <br>
+        <a href="index.html" class="back-home">Back to Home</a> <!-- Link to homepage/dashboard -->
+    </main>
+
+</body>
+</html>

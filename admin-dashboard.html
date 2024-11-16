@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="adminlogo.jpg">
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <script src="admin-dashboard.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="victoryliner.png" alt="Victory Liner Logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <button onclick="showSection('homeSection')">Home</button>
+            <button onclick="showSection('reservationSection')">Manage Seat Reservations</button>
+            <button onclick="showSection('seatAvailabilitySection')">Manage Seat Availability</button> <!-- New Button -->
+            <button onclick="showSection('scheduleSection')">Manage Bus Schedules</button>
+            <button onclick="showSection('historySection')">View Reservations History</button>
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+    
+        <div class="content">
+            <div id="homeSection" style="display:block;">
+                <h2>Welcome to the Admin Dashboard</h2>
+                <p>Manage reservations and view history here.</p>
+            </div>
+            <div id="scheduleSection" style="display:none;">
+                <h2>Manage Bus Schedules</h2>
+
+                <div class="schedule-container">
+                    <!-- Schedule Form -->
+                    <form id="scheduleForm">
+                        <label for="busNumber">Bus Number:</label>
+                        <input type="text" id="busNumber" required><br>
+                        
+                        <label for="scheduleTime">Departure Time:</label>
+                        <input type="time" id="scheduleTime" required><br>
+                        
+                        <label for="driver">Driver:</label>
+                        <input type="text" id="driver" required><br>
+                        
+                        <label for="conductor">Conductor:</label>
+                        <input type="text" id="conductor" required><br>
+                        
+                        <label for="route">Route:</label>
+                        <input type="text" id="route" required><br>
+                        
+                        <button type="button" onclick="addSchedule()">Add Schedule</button>
+                    </form>
+            
+                    <!-- Schedule Table -->
+                    <div class="table-container">
+                        <h3>Existing Bus Schedules</h3>
+                        <table class="booking-table" id="scheduleTable">
+                            <thead>
+                                <tr>
+                                    <th>Bus Number</th>
+                                    <th>Departure Time</th>
+                                    <th>Driver</th>
+                                    <th>Conductor</th>
+                                    <th>Route</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleList">
+                                <!-- Schedule rows will be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+    
+            <div id="reservationSection" style="display:none;">
+                <h2>Manage Reservations</h2>
+                <table class="booking-table" id="reservationsTable">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Bus Number</th>
+                            <th>Driver</th>
+                            <th>Conductor</th>
+                            <th>Seat No.</th>
+                            <th>Pick-up</th>
+                            <th>Drop-off</th>
+                            <th>Time</th>
+                            <th>Payment Status</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservationsList"></tbody>
+                </table>
+                <button class="delete-button" onclick="deleteSelectedBookings()">Delete Bookings</button>
+            </div>
+            <div id="historySection" style="display:none;">
+                <h2>Verified Reservation History</h2>
+                <table class="booking-table" id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>Booking No.</th>
+                            <th>Seat No.</th>
+                            <th>Pick-up</th>
+                            <th>Drop-off</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyList"></tbody>
+                </table>
+                <button class="delete-button" onclick="deleteVerifiedHistory()">Delete Verified History</button>
+            </div>
+            
+            <div id="seatAvailabilitySection" style="display:none;">
+                <h2>Manage Seat Availability</h2>
+
+                <div class="seat-availability-container">
+                    <div class="seat-map-column">
+                        <div id="seatMap" class="seat-map">
+                            <div class="seat-map">
+                                <!-- Row 1 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="1">1</div>
+                                    <div class="seat" data-seat="2">2</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="3">3</div>
+                                    <div class="seat" data-seat="4">4</div>
+                                </div>
+
+                                <!-- Row 2 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="5">5</div>
+                                    <div class="seat" data-seat="6">6</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="7">7</div>
+                                    <div class="seat" data-seat="8">8</div>
+                                </div>
+                            
+                                <!-- Row 3 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="9">9</div>
+                                    <div class="seat" data-seat="10">10</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="11">11</div>
+                                    <div class="seat" data-seat="12">12</div>
+                                </div>
+                            
+                                <!-- Row 4 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="13">13</div>
+                                    <div class="seat" data-seat="14">14</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="15">15</div>
+                                    <div class="seat" data-seat="16">16</div>
+                                </div>
+                            
+                                <!-- Row 5 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="17">17</div>
+                                    <div class="seat" data-seat="18">18</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="19">19</div>
+                                    <div class="seat" data-seat="20">20</div>
+                                </div>
+                            
+                                <!-- Row 6 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="21">21</div>
+                                    <div class="seat" data-seat="22">22</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="23">23</div>
+                                    <div class="seat" data-seat="24">24</div>
+                                </div>
+                            
+                                <!-- Row 7 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="25">25</div>
+                                    <div class="seat" data-seat="26">26</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="27">27</div>
+                                    <div class="seat" data-seat="28">28</div>
+                                </div>
+                            
+                                <!-- Row 8 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="29">29</div>
+                                    <div class="seat" data-seat="30">30</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="31">31</div>
+                                    <div class="seat" data-seat="32">32</div>
+                                </div>
+                            
+                                <!-- Row 9 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="33">33</div>
+                                    <div class="seat" data-seat="34">34</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="35">35</div>
+                                    <div class="seat" data-seat="36">36</div>
+                                </div>
+                            
+                                <!-- Row 10 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="37">37</div>
+                                    <div class="seat" data-seat="38">38</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="39">39</div>
+                                    <div class="seat" data-seat="40">40</div>
+                                </div>
+                            
+                                <!-- Row 11 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="41">41</div>
+                                    <div class="seat" data-seat="42">42</div>
+                                    <div class="aisle"></div>
+                                    <div class="seat" data-seat="43">43</div>
+                                    <div class="seat" data-seat="44">44</div>
+                                </div>
+                            
+                                <!-- Row 12 -->
+                                <div class="row">
+                                    <div class="seat" data-seat="45">45</div>
+                                    <div class="seat" data-seat="46">46</div>
+                                    <div class="seat" data-seat="47">47</div>
+                                    <div class="seat" data-seat="48">48</div>
+                                    <div class="seat" data-seat="49">49</div>
+                                    <div class="seat" data-seat="50">50</div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+
+                        <div class="seat-controls-column">
+                            <div class="seat-control-section">
+                                <label for="seatNumberInput">Enter Seat Number:</label>
+                                <input type="number" id="seatNumberInput" placeholder="Seat Number">
+                                <button onclick="setSeatToAvailable()" class="btn">Set Seat to Available</button>
+                            </div>
+
+                            <div class="seat-control-section bus-selection-container">
+                                <label for="busSelection">Select Bus to Manage Seat Map:</label>
+                                <select id="busSelection" onchange="loadSeatMapForAdmin()">
+                                    <option value="" disabled selected>Select a bus</option>
+                                    <!-- Options dynamically populated by JavaScript -->
+                                </select>
+                                <button onclick="saveSeatMap()" class="btn">Save Seat Map</button>
+                            </div>
+                        
+                        <button onclick="saveSeatAvailability()" class="btn">Save Availability</button>
+                    </div>
+                </div>
+            </div>
+            </div>                        
+    </main>
+</body>
+</html>

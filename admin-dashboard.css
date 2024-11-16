@@ -1,0 +1,450 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header {
+    background-image: linear-gradient(to right, #f7b267, #e85d04, #dc2f02);
+    color: white;
+    padding: 10px 20px;
+    position: fixed; 
+    width: 100%;
+    top: 0; 
+    z-index: 1; 
+    display: flex; 
+    align-items: center; 
+    min-height: 80px; 
+}
+
+.logo {
+    position: absolute;
+    top: 15px; 
+    left: 20px; 
+ }
+ 
+ .logo img {
+    max-height: 50px; 
+    height: auto; 
+    width: auto; 
+    display: block; 
+ }
+
+main {
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.sidebar {
+    background-color: #ffffff;
+    padding: 30px;
+    width: 15%;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 100px;
+    text-align: center;
+    margin-top: 9%;
+    margin-left: 40px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f3f3f3;
+    color: rgb(0, 0, 0);
+    border: 2px solid #e85d04;
+    border-radius: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+    background-image: linear-gradient(to right, #dc2f02, #e85d04, #f48c06);
+    color: #f3f3f3;
+}
+
+button.logout {
+    background-color: #f3f3f3;
+}
+
+.content {
+    margin: 0 auto;
+    margin-left: 25%;
+    width: 75%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.booking-table th, .booking-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.booking-table th {
+    background-color: #f2f2f2;
+}
+
+.booking-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.booking-item p {
+    margin: 5px 0;
+}
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.booking-table th, .booking-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.booking-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #9d0208; /* Victory Liner's dominant red color */
+    text-transform: uppercase;
+}
+
+.booking-table td {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.booking-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+.booking-table tr:hover td {
+    background-color: #fde4e4;
+}
+
+.booking-table th:first-child, .booking-table td:first-child {
+    border-left: none;
+}
+
+.booking-table th:last-child, .booking-table td:last-child {
+    border-right: none;
+}
+
+/* Button styles inside the table */
+.booking-table button {
+    background-color: #9d0208; /* Red for Victory Liner */
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.booking-table button:hover {
+    background-color: #d00000;
+}
+
+/* Action status text (verified/rejected) */
+.booking-table p {
+    font-weight: bold;
+    color: #666;
+}
+
+
+/* Header Section styles */
+h2 {
+    color: #9d0208;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+}
+
+/* History table for verified bookings */
+#historyTable th, #historyTable td {
+    padding: 10px;
+    background-color: #fff9f9;
+}
+
+#historyTable th {
+    background-color: #fdd1d1; /* Slightly lighter red for the history table */
+    color: #9d0208;
+}
+
+/* For empty table states */
+.booking-table td[colspan] {
+    color: #999999;
+    font-style: italic;
+}
+.delete-button {
+    background-color: #d00000; /* Darker red for delete actions */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space between the button and content */
+}
+
+.delete-button:hover {
+    background-color: #9d0208; /* Victory Liner's red for hover effect */
+}
+
+.seat-availability-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#seatAvailabilitySection h2 {
+    font-size: 24px;
+    color: #C8102E; /* Bold Victory Liner Red */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.seat-map-column {
+    flex: 1;
+    max-width: 400px; /* Control width of seat map column */
+}
+
+.seat-controls-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.seat-control-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.seat-control-section label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    max-width: 400px;
+    border: 2px solid #d00000;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    background-color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.seat:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.seat.unavailable {
+    background-color: #F44336;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.aisle {
+    width: 84px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 40px;
+}
+
+#seatNumberInput {
+    padding: 10px;
+    width: 92%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#busSelection {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#busSelection:focus,
+#seatNumberInput:focus {
+    border-color: #9d0208;
+    box-shadow: 0 0 5px rgba(200, 16, 46, 0.3);
+}
+
+.bus-selection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between elements */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Styling for the label */
+.bus-selection-container label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Styling for the select dropdown */
+#busSelection {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #ffffff;
+    transition: border-color 0.3s;
+}
+
+/* Change border color on focus for dropdown */
+#busSelection:focus {
+    border-color: #9d0208; /* Victory Liner Red */
+    outline: none;
+    box-shadow: 0 0 5px rgba(200, 16, 46, 0.3); /* Red focus shadow */
+}
+
+
+.btn {
+    background-color: #d00000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #9d0208;
+}
+
+/* Input Field Styles */
+#scheduleForm label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#scheduleForm input[type="text"],
+#scheduleForm input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+#scheduleForm input[type="text"]:focus,
+#scheduleForm input[type="time"]:focus {
+    border-color: #C8102E; /* Victory Liner Red */
+    outline: none;
+    box-shadow: 0 0 5px rgba(200, 16, 46, 0.5); /* Red focus shadow */
+}
+
+#scheduleForm input[type="text"]:invalid,
+#scheduleForm input[type="time"]:invalid {
+    border-color: #e74c3c; /* Red for invalid input */
+}
+
+#scheduleForm input[type="text"]:valid,
+#scheduleForm input[type="time"]:valid {
+    border-color: #27ae60; /* Green for valid input */
+}
+/* Table Container Header (h3) */
+.table-container h3 {
+    font-size: 18px;
+    color: #C8102E; /* Victory Liner Red */
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #F1C40F; /* Victory Liner Yellow */
+    padding-bottom: 5px;
+    text-align: center;
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Liner</title>
+    <link rel="icon" type="image/png" href="vlogo.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Victory Liner Logo">
+    </div>
+</header>
+      
+
+    <main>
+        <div class="navigation">
+            <button onclick="showSection('home')">Home</button> 
+            <button onclick="showSection('profile')">User Profile</button>
+            <button onclick="showSection('booking')">Booking System</button>
+            <button onclick="showSection('history')">Reservation History</button>
+            <button onclick="logout()">Logout</button> 
+        </div>
+
+        <div class="profile-display">
+            <img src="https://icon-library.com/images/7a3a77f29c.svg.svg" alt="Profile Pic">
+             
+            <div class="profile-info">
+                <span id="profileName"></span>
+                <span id="userId"></span>
+                <button class="edit" onclick="showSection('profile')">edit profile</button>
+            </div>
+        </div>
+
+        <div id="homeSection" class="section" style="display: block;">
+            <img src ="Victory.png" alt="Victory Liner"  class="victory">
+                <div class="reminders">
+                <h1 class="rem">Reminders: </h1>
+                <p class="ders">Please arrive at the terminal 30 minutes before your schedule</p>
+                <p class="ders">Always keep your ticket/receipt for verification upon boarding</p>
+                <p class="ders">Follow safety protocols while at the terminal and during the trip</p>
+                <h1 class="rem">Safe travels with Victory Liner!</h1>
+            </div>
+            <div class="features">
+                <h1 class="feat">Explore Our Features</h1>
+            </div>
+            <div class="pic">
+                <img src="seat.jpg" alt="seat of victory" class="seats">
+                <img src="bus.jpg" alt="victory bus"  class="bus">
+                <img src="terminal.jpg" alt="terminal of victory"  class="terminal">
+            </div>
+
+            <div class="news">
+                <h2>Latest News</h2>
+        
+                <div class="itemNews">
+                    <h3>New Route: Manila to La Union</h3>
+                    <p>We're excited to announce the launch of our new Manila to La Union route. Book your tickets now!</p>
+                    <div class="limited">Limited Time Offer!</div>
+                    <button  class="cta" onclick="showSection('booking')">Book Now</button>
+                </div>
+        
+                <div class="itemNews">
+                    <h3>Holiday Travel Advisory</h3>
+                    <p>Due to the holiday rush, we recommend booking your seats in advance to avoid the hassle of long queues.</p>
+                    <div class="limited">Holiday Seats Filling Fast!</div>
+                    <button  class="cta" onclick="showSection('booking')">Book Now</button>
+                </div>
+            </div>
+
+        <div class="routes">
+            <h2>Popular Routes</h2>
+            <div class="itemRoute">
+                <h3>Manila to Baguio</h3>
+                <p>Travel comfortably to the summer capital of the Philippines with multiple daily trips.</p>
+            </div>
+            <div class="itemRoute">
+                <h3>Cubao to Olongapo</h3>
+                <p>Enjoy a scenic ride along the northern coastline. Book your tickets in advance!</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How do I book a seat online?</h3>
+                <p>Simply visit our booking system, choose your destination, and follow the step-by-step process.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What if I miss the bus?</h3>
+                <p>If you miss your bus, you can request a refund or reschedule depending on availability.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How far in advance can I book a seat?</h3>
+                <p>Yes, you can book multiple seats at once! Just select the number of seats during the booking process and enter the necessary passenger details. If you need assistance, please contact our customer service.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I book multiple seats in a single reservation?</h3>
+                <p>Yes, you can book multiple seats in one reservation! Just select the number of seats during the booking process and provide the necessary passenger details. If you need assistance, feel free to contact our customer service.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do I need to print my ticket, or can I show the confirmation on my phone?</h3>
+                <p>You can show your receipt to the bus conductor directly from your phone, printing is optional but can be a hassle. Just ensure your receipt is accessible for a smooth boarding experience.</p>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any inquiries or need assistance, don't hesitate to contact our customer support team.</p>
+            <ul>
+                <li>Email: victoryliner@gmail.com</li>
+                <li>Phone: +63 912 345 6789</li>
+                <li>Address: National Highway, Palanginan, Iba, Zambales</li>
+            </ul>
+        </div>
+        
+        
+        
+        </div>
+
+        <div id="profileSection" class="profile-container" style="display: none;">
+            <h2>PROFILE INFORMATION</h2>
+            <p><strong>Name:</strong> <span class="prof" id="userName"></span></p>
+            <p><strong>Email:</strong> <span class="prof" id="userEmail"></span></p>
+            <p><strong>Address:</strong> <span class="prof" id="userAddress"></span></p>
+            <p><strong>Date of Birth:</strong> <span class="prof" id="userDob"></span></p>
+            <p><strong>Gender:</strong> <span class="prof" id="userGender"></span></p>
+            <p><strong>Phone Number:</strong> <span class="prof" id="userPhone"></span></p>
+            <button onclick="editProfile()">Edit Profile</button>
+            <button id="saveBtn" onclick="saveProfile()" style="display: none;">Save</button>
+        </div>
+
+        <div id="bookingSection" class="section" style="display: none;">
+            <h2>Book a Bus Seat</h2>
+            <d id="bookingForm">
+                <label for="seatNo">Select Your Seat:</label>
+                <div class="flex-container">
+
+                     <!-- Seat Map Display -->
+                <div id="seatMap" class="seat-map">
+                    <!-- Seat map rows are dynamically generated here -->
+                </div>
+
+
+                <div class="pickup-dropoff-container">
+                <div class="form-group">
+                    <label for="busNumber">Select Bus Number and Time:</label>
+                    <select id="busNumber" name="busNumber" required>
+                        <option value="" disabled selected>--Select Bus--</option>
+                        
+                    </select>
+                </div>
+                
+                    <div class="form-group">
+                        <input type="hidden" id="seatNo" name="seatNo" required />
+                        <label for="pickup">Pick-up Location:</label>
+                        <select id="pickup" name="pickup" required>
+                            <option value="" disabled selected>--------</option>
+                            <option value="Sta. Cruz(Terminal)">Sta. Cruz(Terminal)</option>
+                            <option value="Candelaria">Candelaria</option>
+                            <option value="Masinloc">Masinloc</option>
+                            <option value="Palauig">Palauig</option>
+                            <option value="Iba(Terminal)">Iba(Terminal)</option>
+                            <option value="Botolan(Public Market/Municipal)">Botolan(Public Market/Municipal)</option>
+                            <option value="Cabangan">Cabangan(Municipal/Bus Stop)</option>
+                            <option value="San Felipe(Public Market/Bus Stop)">San Felipe(Public Market/Bus Stop)</option>
+                            <option value="San narciso">San narciso(Plaza/Municipal)</option>
+                            <option value="San Antonio">San Antonio</option>
+                            <option value="San Marcelino(Public Market)">San Marcelino(Public Market)</option>
+                            <option value="Castillejos(Public Market/Municipal)">Castillejos(Public Market/Municipal)</option>
+                            <option value="Subic">Subic</option>
+                            <option value="Olongapo City(Terminal)">Olongapo City(Terminal)</option>
+                        </select>
+                        </div>
+                
+        
+                <div class="form-group">
+                <label for="dropoff">Drop-off Location:</label>
+                <select id="dropoff" name="dropoff" required>
+                    <option value="" disabled selected>--------</option>
+                    <option value="Sta. Cruz(Terminal)">Sta. Cruz(Terminal)</option>
+                    <option value="Candelaria">Candelaria</option>
+                     <option value="Masinloc">Masinloc</option>
+                    <option value="Palauig">Palauig</option>
+                    <option value="Iba(Terminal)">Iba(Terminal)</option>
+                    <option value="Botolan(Public Market/Municipal)">Botolan(Public Market/Municipal)</option>
+                    <option value="Cabangan">Cabangan(Municipal/Bus Stop)</option>
+                    <option value="San Felipe(Public Market/Bus Stop)">San Felipe(Public Market/Bus Stop)</option>
+                    <option value="San narciso">San narciso(Plaza/Municipal)</option>
+                    <option value="San Antonio">San Antonio</option>
+                    <option value="San Marcelino(Public Market)">San Marcelino(Public Market)</option>
+                    <option value="Castillejos(Public Market/Municipal)">Castillejos(Public Market/Municipal)</option>
+                    <option value="Subic">Subic</option>
+                    <option value="Olongapo City(Terminal)">Olongapo City(Terminal)</option>
+                </select>
+                </div>
+                    
+                <div class="time-container">
+                    <div class="form-group">
+                        <label for="time">Time:</label>
+                        <input type="time" id="time" name="time" required>
+                </div>
+                </div>
+                            
+            <div id="summaryBox" class="summary-table">
+                <h3>Booking Summary</h3>
+                <table>
+                    <tr>
+                        <th>Detail</th>
+                        <th>Information</th>
+                    </tr>
+                    <tr>
+                        <td>Selected Seat:</td>
+                        <td id="selectedSeat">None</td>
+                    </tr>
+                    <tr>
+                        <td>Pick-up Location:</td>
+                        <td id="pickupLocation">None</td>
+                    </tr>
+                    <tr>
+                        <td>Drop-off Location:</td>
+                        <td id="dropoffLocation">None</td>
+                    </tr>
+                    <tr>
+                        <td>Time:</td>
+                        <td id="selectedTime">None</td>
+                    </tr>
+                    <tr>
+                        <td>Bus:</td>
+                        <td id="selectedBus">None</td>
+                    </tr>
+                    <tr>
+                        <td>Fare Amount:</td>
+                        <td id="fareAmount">None</td>
+                    </tr>           
+                </table>
+            </div>
+            </div>
+            </div>
+
+                
+            <button type="button" onclick="bookNow()">Book Now</button>
+            </form>
+
+            <!-- Payment Prompt Modal -->
+            <div id="paymentPromptModal"  class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h2>Payment Required</h2>
+                    <p>You need to complete your payment to confirm this booking.</p>
+                    <button onclick="proceedToPayment()">Proceed to Payment</button>
+                </div>
+            </div>
+
+
+            <!-- Payment Modal -->
+            <div id="paymentModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h2>Payment Information</h2>
+
+                    <label for="paymentMethod">Select Payment Method:</label>
+                    <div class="payment-options">
+                        <img src="gcashlogo.png" alt="GCash Logo" class="payment-logo">
+                        <img src="paymaya.png" alt="PayMaya Logo" class="payment-logo">
+                        <select id="paymentMethod" required>
+                            <option value="" disabled selected>Choose Payment Method</option>
+                            <option value="GCash">GCash</option>
+                            <option value="PayMaya">PayMaya</option>
+                        </select>
+                    </div>
+                
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" pattern="[0-9]{10,11}" placeholder="Enter Phone Number" required>
+                
+                    <label for="seatCount">Payment:</label>
+                    <input type="number" id="seatCount" min="1" placeholder="Payment" required>
+                
+                    <button onclick="processPayment()">Pay Now</button>
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="historySection" class="section" style="display: none;">
+            <h2>Your Reservation History</h2>
+            <div id="history"></div>
+            <button onclick="deleteHistory()">Delete History</button>
+        </div>  
+    </main>
+
+</body>
+</html>
